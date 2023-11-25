@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Películas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Agrega la fuente "Pacifico" desde Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+
+    <style>
+        .image-container {
+            height: 450px;
+            object-fit: cover;
+            border: 4px solid #f00;
+            padding: 10px;
+        }
+
+        /* Agrega animaciones y transiciones */
+        body {
+            transition: background-color 0.5s ease;
+        }
+
+        .text-center {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive; /* Aplica la fuente Pacifico */
+            transition: color 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        h1:hover {
+            color: #FF6347; /* Cambia el color al pasar el ratón */
+        }
+
+        .btn-primary {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+
+<div class="container">
+    <h1 class="my-4">Lista de Películas</h1>
+    <a href="/add" class="btn btn-primary">Añadir película</a>
+    <a href="#" class="btn btn-secondary" onclick="history.go(-1)">Retroceder</a>
+
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-4">
+        <!-- El nombre de películas es el que viene del controlador crud -->
+        <div th:each="p:${peliculas}" class="col">
+            <div class="card">
+                <img th:src="'/img/' + ${p.imagen}" class="card-img-top" alt="Imagen de la película">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${p.titulo}"></h5>
+                    <p class="card-text" th:text="${#strings.length(p.sinopsis) >= 15 ? #strings.substring(p.sinopsis,0,15) : p.sinopsis}"></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>ID:</strong> <span th:text="${p.id}"></span></li>
+                    <li class="list-group-item"><strong>Fecha:</strong> <span th:text="${p.fecha}"></span></li>
+                    <li class="list-group-item"><strong>Nacionalidad:</strong> <span th:text="${p.nacionalidad}"></span></li>
+                </ul>
+                <div class="card-body">
+                    <a th:href="'/crud/update/' + ${p.id}" class="btn btn-primary">Modificar</a>
+                    <a th:href="'/crud/delete/' + ${p.id}" class="btn btn-danger">Borrar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
