@@ -10,7 +10,7 @@ se usa XAMPP para conectar con la base de datos que se crea en PHPMYADMIN
 
 <img width="957" alt="Captura de pantalla 2023-11-25 132726" src="https://github.com/MiguelMoya89/peliculon/assets/127111987/61400fb9-cf1d-42e3-b092-ac5e06c539e2">
 
-<img width="959" alt="Captura de pantalla 2023-11-25 132809" src="https://github.com/MiguelMoya89/peliculon/assets/127111987/290fce36-5e9e-49a0-9a9e-3b4bf6af20dc">
+<img width="959" alt="Captura de pantalla 2023-11-25 133632" src="https://github.com/MiguelMoya89/peliculon/assets/127111987/beaad92e-2a0e-43a7-a7bb-56b94099a8f1">
 
 
 
